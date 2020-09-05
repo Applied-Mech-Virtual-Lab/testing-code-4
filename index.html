@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-US">
    <head>
       <meta charset="UTF-8">
@@ -96,8 +96,7 @@
          <p id="pumptext-2" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Record the value from the spring</p>
          <img id="canvas2_img1" style="position: absolute; left: 50px; top: 30px; width:600px; height:400px;visibility:hidden;" src="Images/canvas1_2.png">
          <div id="myresult" class="img-zoom-result" style="position: absolute; left: 500px; top: 100px; width:100px; height:100px;"></div>
-         
-         
+            
          <div style='transform: scale(0.4); position: absolute; top: 200px;'>
             <h3>What is the initial reading of the spring bar?</h3>
             <hr />
@@ -136,42 +135,60 @@
             <button type='button' onclick='displayAnswer1()' style='width: 100px; height: 40px; border-radius: 3px; background-color: lightblue; font-weight: 700;'>Check</button>
           </div>
           <a id='showanswer1'></a>
-
+         
          <img id="wg" style="position: absolute; left: 430px; top: 255px;" src="Images/ewm.png"/>
-         <img id="cem2-3" style="position: absolute; left: 520px; top: 260px; visibility:hidden; " src="Images/cem9.png"/>
-         <img id="a5" style="position: absolute; left: 551.25px; top: 29px; visibility:hidden;" src="Images/1.2.png"/>
-         <img id="a6" style="position: absolute; left: 520px; top: 52px;visibility:hidden;" src="Images/1.36.png"/>
-         <img id="cem2-1" style="position: absolute; left: 236px; top: 226px; visibility:hidden; " src="Images/cem0.png"/>
-         <img id="cem2-2" style="position: absolute; left: 200px; top: 433px; visibility:hidden; " src="Images/cem4.png"/>
          <img id="nob" style="position: absolute; left: 232px; top: 145px;cursor:move;" src="Images/1.2.png"/>
-         <img id="nob1" style="position: absolute; left: 155px; top: 145px;visibility:hidden; cursor:move;" src="Images/1.2.png"/>
-         <img id="nob2" style="position: absolute; left: 232px; top: 145px;visibility:hidden;" src="Images/1.2.png"/>
-         <img id="cem2-4" style="position: absolute; left: 215px; top: 162px; visibility:hidden; " src="Images/cem8.png"/>
          <img id="flask" style="position: absolute; left: 200px; top: 180px;" src="Images/1.13.png"/>
-         <img id="cflask" style="position: absolute; left: 200px; top: 180px;cursor:move;visibility:hidden;" src="Images/1.13.png"/>
-         <img id="hand" style="position: absolute; left: 275px; top: 125px; visibility:hidden;cursor:pointer;" src="Images/hn.png"/>
       </div>
       <!--Step3	-->
+
       <div class="simsubscreen" id="canvas3" style="visibility:hidden">
          <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;3&nbsp;</span>
-         <p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Add kerosene to the flask upto the graduated mark and shake it well to remove air bubbles. </p>
-         <img id="wg" style="position: absolute; left: 430px; top: 255px;" src="Images/ewm.png"/>
-         <img id="k1" style="position: absolute; left: 522px; top: 100px; visibility:hidden; " src="Images/kero3.png"/>
-         <img id="k2" style="position: absolute; left: 520px; top: 265px; visibility:hidden; " src="Images/cem9.png"/>
-         <img id="a11" style="position: absolute; left: 551.25px; top: 29px; visibility:hidden;" src="Images/1.2.png"/>
-         <img id="a12" style="position: absolute; left: 520px; top: 50px;visibility:hidden;" src="Images/1.27.png"/>
-         <img id="ker3-1" style="position: absolute; left: 236px; top: 228px; visibility:hidden; " src="Images/kero0.png"/>
-         <img id="ker3-2" style="position: absolute; left: 202px; top: 265px; visibility:hidden; " src="Images/kero3.png"/>
-         <img id="nob3-1" style="position: absolute; left: 232px; top: 145px;cursor:move;" src="Images/1.2.png"/>
-         <img id="nob3-2" style="position: absolute; left: 155px; top: 145px;visibility:hidden; cursor:move;" src="Images/1.2.png"/>
-         <img id="nob3-3" style="position: absolute; left: 232px; top: 145px;visibility:hidden;" src="Images/1.2.png"/>
-         <img id="kero3-4" style="position: absolute; left: 215px; top: 162px; visibility:hidden; " src="Images/kero4.png"/>
-         <img id="cem3-1" style="position: absolute; left: 200px; top: 400px; visibility:hidden; " src="Images/cem4.png"/>
-         <img id="flask3" style="position: absolute; left: 200px; top: 180px;" src="Images/1.13.png"/>
-         <img id="cflask3" style="position: absolute; left: 200px; top: 180px;cursor:move;visibility:hidden;" src="Images/1.13.png"/>
-         <img id="hand3" style="position: absolute; left: 275px; top: 125px; visibility:hidden; cursor:pointer;" src="Images/hn.png"/>
-         <p id="can3" style="position:absolute;top: 450px; left:28px;font-family:verdana; font-size:14px;">Weight of flask + cement + kerosene (W<sub>3</sub>)=_____ g</p>
-         <p id="v3" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+         <p class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Add Weights</p>
+         <img id="canvas3_img1" style="position: absolute; left: 100px; top: 30px; width:700px; height:500px;" src="Images/canvas1_1.png">
+         <img id="canvas3_img2" style="position: absolute; left: 100px; top: 30px; width:700px; height:500px; visibility:hidden;" src="Images/canvas1_2.png">
+         <img id="weight" style="position: absolute; left: 430px; top: 270px; width: 20px; height: 60px; cursor:move;" src="Images/Weight.png"/>
+         <div id="myresult2" class="img-zoom-result" style="position: absolute; left: 500px; top: 100px; width:100px; height:100px;"></div>
+
+         <div id="question1" style='transform: scale(0.4); position: absolute; top: 200px; visibility:hidden;'>
+            <h3>What is the initial reading of the spring bar?</h3>
+            <hr />
+          
+            <div id='block-21' style='padding: 10px;'>
+              <label for='option-21' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='6/24' id='option-21' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                6/24</label>
+              <span id='result-21'></span>
+            </div>
+            <hr />
+          
+            <div id='block-22' style='padding: 10px;'>
+              <label for='option-22' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='6' id='option-22' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                6</label>
+              <span id='result-22'></span>
+            </div>
+            <hr />
+          
+            <div id='block-23' style='padding: 10px;'>
+              <label for='option-23' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='1/3' id='option-23' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                1/3</label>
+              <span id='result-23'></span>
+            </div>
+            <hr />
+          
+            <div id='block-24' style='padding: 10px;'>
+              <label for='option-24' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='1/6' id='option-24' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                1/6</label>
+              <span id='result-24'></span>
+            </div>
+            <hr />
+            <button type='button' onclick='displayAnswer2()' style='width: 100px; height: 40px; border-radius: 3px; background-color: lightblue; font-weight: 700;'>Check</button>
+          </div>
+          <a id='showanswer2'></a>
+
       </div>
       <!--Step4	-->
       <div class="simsubscreen" id="canvas4" style="visibility:hidden">
