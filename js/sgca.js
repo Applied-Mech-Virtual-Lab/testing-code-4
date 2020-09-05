@@ -37,6 +37,64 @@ var options2=[["100ml","250ml","500ml","1000ml"],//250ml
 			  ["True","False"],//True
 			  ["3.9","3.11","3.16","3.19"]];//3.19
 
+
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /*create lens:*/
+  lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  /*insert lens:*/
+  img.parentElement.insertBefore(lens, img);
+  /*calculate the ratio between result DIV and lens:*/
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /*set background properties for the result DIV:*/
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+  /*execute a function when someone moves the cursor over the image, or the lens:*/
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /*and also for touch screens:*/
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image:*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    /*calculate the position of the lens:*/
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /*prevent the lens from being positioned outside the image:*/
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /*set the position of the lens:*/
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /*display what the lens "sees":*/
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+			  
 function validateAnswer(qn,ans,left,top)
 {
 	 $("#answer").empty();
@@ -100,15 +158,11 @@ function magic()
 
 	if (simsubscreennum==1)
 	{
-		//refresh1();
 		document.getElementById('nextButton').style.visibility="hidden";
 		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 100px; top: 250px; height: 40px; z-index: 10;";
+
 		myInt = setInterval(function(){ animatearrow(); }, 500);
-
-		document.getElementById('trial').style="visibility:visible ;left: 700px; top: 100px;position: absolute;font-weight: bold;text-transform: uppercase;";
-		document.getElementById('trial').innerHTML="";
-
-
+		
 		document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
 		// Code for IE9
 		document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
@@ -119,8 +173,16 @@ function magic()
 
 	else if (simsubscreennum==2)
 	{
+		document.getElementById('canvas1_img2').style.visibility="hidden";
+		imageZoom("canvas2_img1", "myresult");
+
+		document.getElementById('flask').style.visibility="hidden";
+		document.getElementById('wg').style.visibility="hidden";
+		document.getElementById('nob').style.visibility="hidden";
+		document.getElementById('canvas2_img1').style.visibility="visible";
+
 		//Prevent repetitive random numbers
-		while (p == lastp)
+		/*while (p == lastp)
 		{
 			p = Math.floor(Math.random() * 4);
 		}
@@ -128,23 +190,27 @@ function magic()
 		{
 			lastp = p;
 		}
-		refresh2();
-		refresh1();
-		repeat+=1;
-		if(flag==1)
-		{
-		 document.getElementById('r1').style.visibility="hidden";
-		 document.getElementById('w1').style.visibility="hidden";
-		 document.getElementById('p6-1').style.visibility="hidden";
-		 document.getElementById('canvas6').style.visibility="hidden";
-         document.getElementById('flask').style.visibility="visible";
-		 document.getElementById('nob').style.visibility="visible";
+		*/
+		//refresh2();
+		//refresh1();
+		//repeat+=1;
+		//if(flag==1)
+		//{
+		//	document.getElementById('flask').style.visibility="hidden";
+		//	document.getElementById('wg').style.visibility="hidden";
 
-		 document.getElementById('trial').style="visibility:visible;left: 700px; top: 100px;position: absolute;font-weight: bold;text-transform: uppercase;";
-		 document.getElementById('trial').innerHTML="Trial : " + repeat;
+		 //document.getElementById('r1').style.visibility="hidden";
+		 //document.getElementById('w1').style.visibility="hidden";
+		 //document.getElementById('p6-1').style.visibility="hidden";
+		 //document.getElementById('canvas6').style.visibility="hidden";
+         //document.getElementById('flask').style.visibility="visible";
+		 //document.getElementById('nob').style.visibility="visible";
 
-		 document.getElementById('nextButton').style.visibility="hidden";
+		// document.getElementById('trial').style="visibility:visible;left: 700px; top: 100px;position: absolute;font-weight: bold;text-transform: uppercase;";
+		 //document.getElementById('trial').innerHTML="Trial : " + repeat;
 
+		 //document.getElementById('nextButton').style.visibility="hidden";
+		 /*
 
 		myInt = setInterval(function(){ animatearrow(); }, 500);
 		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 190px; top: 190px; height: 40px; z-index: 10;";
@@ -159,27 +225,24 @@ function magic()
 		document.getElementById('nob').onclick=function() { step2(); };
 	}
 	else
-				{
-		document.getElementById('a3').style.visibility="hidden";
-	document.getElementById('a4').style.visibility="hidden";
-			document.getElementById('nextButton').style.visibility="hidden";
+				{*/
 
-		document.getElementById('trial').style="visibility:visible ;left: 700px; top: 100px;position: absolute;font-weight: bold;text-transform: uppercase;";
-		document.getElementById('trial').innerHTML="Trial : " + repeat;
+		//document.getElementById('a3').style.visibility="hidden";
+	//document.getElementById('a4').style.visibility="hidden";
+		//	document.getElementById('nextButton').style.visibility="hidden";
+
+	//	document.getElementById('trial').style="visibility:visible ;left: 700px; top: 100px;position: absolute;font-weight: bold;text-transform: uppercase;";
+	//	document.getElementById('trial').innerHTML="Trial : " + repeat;
 
 
-		myInt = setInterval(function(){ animatearrow(); }, 500);
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 190px; top: 190px; height: 40px; z-index: 10;";
+	//	myInt = setInterval(function(){ animatearrow(); }, 500);
+	//	document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 190px; top: 190px; height: 40px; z-index: 10;";
 
-		document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
+		//document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
 		// Code for IE9
-		document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
+		//document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
 		// Standard syntax
-		document.getElementById("arrow1").style.transform = "rotate(180deg)";
-
-
-		document.getElementById('nob').onclick=function() { step2(); };
-	}
+		//document.getElementById("arrow1").style.transform = "rotate(180deg)";
 
 
 	}
@@ -336,17 +399,19 @@ function magic()
 {
 	myStopFunction();
 	document.getElementById('canvas1_img1').style.visibility="hidden";
-	setTimeout(function(){
 	document.getElementById('canvas1_img2').style.visibility="visible";
-}, 200);
- document.getElementById('nextButton').style.visibility="visible";
-
+ 	document.getElementById('nextButton').style.visibility="visible";
 }
 
 
 	function step2()
 {
 	myStopFunction();
+	document.getElementById('nextButton').style.visibility="visible";
+	/*
+	
+
+
 	document.getElementById('nob').style.visibility="hidden";
 	document.getElementById('nob1').style.visibility="visible";
 	document.getElementById("nob1").onclick="";
@@ -373,8 +438,8 @@ function step21()
 	document.getElementById('hand').style.animation = "valveturn-4 1.5s forwards ";
 	setTimeout(function()
 	{
-		 document.getElementById('cem2-4').style.visibility="visible";
-		document.getElementById('cem2-1').style.visibility="visible";
+	document.getElementById('cem2-4').style.visibility="visible";
+	document.getElementById('cem2-1').style.visibility="visible";
 	document.getElementById('cem2-1').style.animation = "water-5 1.5s 1 reverse";
 	document.getElementById('cem2-2').style.visibility="visible";
 	document.getElementById('cem2-2').style.animation = "water-5 1.8s 1 forwards";
@@ -421,6 +486,7 @@ function step22()
  }, 1300);
 }
 
+*/}
 function step23()
 {
 	myStopFunction();
@@ -946,3 +1012,46 @@ function checkInference()
 		$("#infAns").fadeIn(750);
 	},1000);
 }
+
+function displayAnswer1() {
+    if (document.getElementById('option-11').checked) {
+      document.getElementById('block-11').style.border = '3px solid limegreen'
+      document.getElementById('result-11').style.color = 'limegreen'
+	  document.getElementById('result-11').innerHTML = 'Correct!'
+	  step2()
+    }
+    if (document.getElementById('option-12').checked) {
+      document.getElementById('block-12').style.border = '3px solid red'
+      document.getElementById('result-12').style.color = 'red'
+      document.getElementById('result-12').innerHTML = 'Incorrect!'
+      showCorrectAnswer1()
+    }
+    if (document.getElementById('option-13').checked) {
+      document.getElementById('block-13').style.border = '3px solid red'
+      document.getElementById('result-13').style.color = 'red'
+      document.getElementById('result-13').innerHTML = 'Incorrect!'
+      showCorrectAnswer1()
+    }
+    if (document.getElementById('option-14').checked) {
+      document.getElementById('block-14').style.border = '3px solid red'
+      document.getElementById('result-14').style.color = 'red'
+      document.getElementById('result-14').innerHTML = 'Incorrect!'
+      showCorrectAnswer1()
+    }
+  }
+  // the functon displays the link to the correct answer
+  function showCorrectAnswer1() {
+    let showAnswer1 = document.createElement('p')
+    showAnswer1.innerHTML = 'Show Corrent Answer'
+    showAnswer1.style.position = 'relative'
+    showAnswer1.style.top = '-180px'
+    showAnswer1.style.fontSize = '1.75rem'
+    document.getElementById('showanswer1').appendChild(showAnswer1)
+    showAnswer1.addEventListener('click', () => {
+      document.getElementById('block-11').style.border = '3px solid limegreen'
+      document.getElementById('result-11').style.color = 'limegreen'
+      document.getElementById('result-11').innerHTML = 'Correct!'
+	  document.getElementById('showanswer1').removeChild(showAnswer1)
+	  step2()
+    })
+  }

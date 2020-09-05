@@ -40,6 +40,25 @@
          .tooltip:hover .tooltiptext {
          visibility: visible;
          }
+         * {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 300px;
+  height: 300px;
+}
       </style>
    </head>
    <body style="margin:0; font-family:verdana; font-size:14px;">
@@ -60,6 +79,7 @@
          <span  class="tooltiptext" style="text-align:justify;"><strong style="color:red;">INFO</strong> Comment</span></span>
          <img id="" style="position: absolute; left: 100px; top: 50px; width:500px; height:500px;" title="Bell Crank Lever Apparatus" src="Images/bell_crank_3d.png"/>
       </div>
+
       <!--Step1	-->
       <div class="simsubscreen" id="canvas1" style="visibility:hidden">
          <strong id="titlestep" class="incanvas">STEP</strong>
@@ -67,17 +87,56 @@
          <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Make sure to tighten the string using the screw</p>
 				 <img id="canvas1_img1" style="position: absolute; left: 100px; top: 30px; width:700px; height:500px;cursor:move" src="Images/canvas1_1.png">
 				 <img id="canvas1_img2" style="position: absolute; left: 100px; top: 30px; width:700px; height:500px;visibility:hidden;" src="Images/canvas1_2.png">
-         <!--img id="a1" style="position: absolute; left: 232px; top: 145px;" src="Images/1.2.png"/-->
-         <!--img id="a2" style="position: absolute; left: 200px; top: 180px;cursor:move;" src="Images/1.12.png"/-->
-         <!--img id="a3" style="position: absolute; left: 551px; top: 25px; visibility:hidden;" src="Images/1.2.png"/-->
-         <!--img id="a4" style="position: absolute; left: 520px; top: 50px;visibility:hidden;" src="Images/1.12.png"/-->
-
       </div>
+
       <!--Step2	-->
       <div class="simsubscreen" id="canvas2" style="visibility:hidden">
          <strong id="titlestep" class="incanvas">STEP &nbsp;</strong>
          <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
-         <p id="pumptext-2" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Remove the stopper and add weighed amount of cement, then weigh the flask with stopper.</p>
+         <p id="pumptext-2" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Record the value from the spring</p>
+         <img id="canvas2_img1" style="position: absolute; left: 50px; top: 30px; width:600px; height:400px;visibility:hidden;" src="Images/canvas1_2.png">
+         <div id="myresult" class="img-zoom-result" style="position: absolute; left: 500px; top: 100px; width:100px; height:100px;"></div>
+         
+         
+         <div style='transform: scale(0.4); position: absolute; top: 200px;'>
+            <h3>What is the initial reading of the spring bar?</h3>
+            <hr />
+          
+            <div id='block-11' style='padding: 10px;'>
+              <label for='option-11' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='6/24' id='option-11' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                6/24</label>
+              <span id='result-11'></span>
+            </div>
+            <hr />
+          
+            <div id='block-12' style='padding: 10px;'>
+              <label for='option-12' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='6' id='option-12' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                6</label>
+              <span id='result-12'></span>
+            </div>
+            <hr />
+          
+            <div id='block-13' style='padding: 10px;'>
+              <label for='option-13' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='1/3' id='option-13' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                1/3</label>
+              <span id='result-13'></span>
+            </div>
+            <hr />
+          
+            <div id='block-14' style='padding: 10px;'>
+              <label for='option-14' style=' padding: 5px; font-size: 2.5rem;'>
+                <input type='radio' name='option' value='1/6' id='option-14' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
+                1/6</label>
+              <span id='result-14'></span>
+            </div>
+            <hr />
+            <button type='button' onclick='displayAnswer1()' style='width: 100px; height: 40px; border-radius: 3px; background-color: lightblue; font-weight: 700;'>Check</button>
+          </div>
+          <a id='showanswer1'></a>
+
          <img id="wg" style="position: absolute; left: 430px; top: 255px;" src="Images/ewm.png"/>
          <img id="cem2-3" style="position: absolute; left: 520px; top: 260px; visibility:hidden; " src="Images/cem9.png"/>
          <img id="a5" style="position: absolute; left: 551.25px; top: 29px; visibility:hidden;" src="Images/1.2.png"/>
@@ -91,8 +150,6 @@
          <img id="flask" style="position: absolute; left: 200px; top: 180px;" src="Images/1.13.png"/>
          <img id="cflask" style="position: absolute; left: 200px; top: 180px;cursor:move;visibility:hidden;" src="Images/1.13.png"/>
          <img id="hand" style="position: absolute; left: 275px; top: 125px; visibility:hidden;cursor:pointer;" src="Images/hn.png"/>
-         <p id="can2" style="position:absolute;top: 450px; left:28px;font-family:verdana; font-size:14px;">Weight of flask + cement (W<sub>2</sub>)= _____g</p>
-         <p id="v2" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
       </div>
       <!--Step3	-->
       <div class="simsubscreen" id="canvas3" style="visibility:hidden">
