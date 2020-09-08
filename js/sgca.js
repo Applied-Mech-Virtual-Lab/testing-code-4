@@ -159,7 +159,7 @@ function magic()
 	if (simsubscreennum==1)
 	{
 		document.getElementById('nextButton').style.visibility="hidden";
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 100px; top: 250px; height: 40px; z-index: 10;";
+		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 70px; top: 245px; height: 40px; z-index: 10;";
 
 		myInt = setInterval(function(){ animatearrow(); }, 500);
 		

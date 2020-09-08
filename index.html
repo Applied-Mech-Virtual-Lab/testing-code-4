@@ -47,7 +47,6 @@
 }
 
 .img-zoom-lens {
-  border: 1px solid #d4d4d4;
   /*set the size of the lens:*/
   width: 40px;
   height: 40px;
@@ -85,8 +84,9 @@
          <strong id="titlestep" class="incanvas">STEP</strong>
          <span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span>
          <p id="pumptext" class="steptext" style="font-family:verdana; font-size:14px;">Make sure to tighten the string using the screw</p>
-				 <img id="canvas1_img1" style="position: absolute; left: 100px; top: 30px; width:700px; height:500px;cursor:move" src="Images/canvas1_1.png">
-				 <img id="canvas1_img2" style="position: absolute; left: 100px; top: 30px; width:700px; height:500px;visibility:hidden;" src="Images/canvas1_2.png">
+         <p id="pumptext2" style="font-family:verdana; font-size:14px;"><br><br>Add Paragraph explaining?</p>
+			<img id="canvas1_img1" style="position: absolute; left: 80px; top: 150px; width:600px; height:272px;cursor:move" src="Images/canvas1_1.png">
+         <img id="canvas1_img2" style="position: absolute; left: 80px; top: 150px; width:600px; height:272px;visibility:hidden;" src="Images/canvas1_2.png">
       </div>
 
       <!--Step2	-->
@@ -94,13 +94,33 @@
          <strong id="titlestep" class="incanvas">STEP &nbsp;</strong>
          <span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span>
          <p id="pumptext-2" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Record the value from the spring</p>
-         <img id="canvas2_img1" style="position: absolute; left: 50px; top: 30px; width:600px; height:400px;visibility:hidden;" src="Images/canvas1_2.png">
-         <div id="myresult" class="img-zoom-result" style="position: absolute; left: 500px; top: 100px; width:100px; height:100px;"></div>
-            
-         <div style='transform: scale(0.4); position: absolute; top: 200px;'>
+         <p id="pumptext2" style="font-family:verdana; font-size:14px;"><br><br>Add Paragraph explaining?</p>
+         <img id="canvas2_img1" style="position: absolute; left: 50px; top: 100px; width:600px; height:272px;visibility:hidden;" src="Images/canvas1_2.png">
+         <div id="myresult" class="img-zoom-result" style="position: absolute; left: 500px; top: 320px; width:200px; height:200px;"></div>   
+
+         <div style='transform: scale(0.8); position: absolute; top: 320px;'>
+            <br>
             <h3>What is the initial reading of the spring bar?</h3>
             <hr />
-          
+
+            <form id='question1'>
+               <fieldset>
+                  <legend>Selecting elements</legend>
+                  <p>
+                     <label>Select list</label>
+                     <select id = "myList">
+                       <option value = "1">one</option>
+                       <option value = "2">two</option>
+                       <option value = "3">three</option>
+                       <option value = "4">four</option>
+                     </select>
+                  </p>
+               </fieldset>
+               <p id="Answer">
+            </form>
+         </div>
+
+      <!--      
             <div id='block-11' style='padding: 10px;'>
               <label for='option-11' style=' padding: 5px; font-size: 2.5rem;'>
                 <input type='radio' name='option' value='6/24' id='option-11' style='transform: scale(1.6); margin-right: 10px; vertical-align: middle; margin-top: -2px;' />
@@ -134,6 +154,8 @@
             <hr />
             <button type='button' onclick='displayAnswer1()' style='width: 100px; height: 40px; border-radius: 3px; background-color: lightblue; font-weight: 700;'>Check</button>
           </div>
+         -->
+
           <a id='showanswer1'></a>
          
          <img id="wg" style="position: absolute; left: 430px; top: 255px;" src="Images/ewm.png"/>
