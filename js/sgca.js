@@ -159,7 +159,7 @@ function magic()
 	if (simsubscreennum==1)
 	{
 		document.getElementById('nextButton').style.visibility="hidden";
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 100px; top: 250px; height: 40px; z-index: 10;";
+		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 70px; top: 245px; height: 40px; z-index: 10;";
 
 		myInt = setInterval(function(){ animatearrow(); }, 500);
 		
@@ -173,13 +173,11 @@ function magic()
 
 	else if (simsubscreennum==2)
 	{
+		document.getElementById('nextButton').style.visibility="hidden";
 		document.getElementById('canvas1_img2').style.visibility="hidden";
 		imageZoom("canvas2_img1", "myresult");
-
-		document.getElementById('flask').style.visibility="hidden";
-		document.getElementById('wg').style.visibility="hidden";
-		document.getElementById('nob').style.visibility="hidden";
 		document.getElementById('canvas2_img1').style.visibility="visible";
+
 
 	}
 	else if (simsubscreennum==3)
@@ -324,14 +322,23 @@ function magic()
 	function step2()
 {
 	myStopFunction();
-	document.getElementById('nextButton').style.visibility="visible";
+	if(document.getElementById('myList').value == 2)
+		{
+			document.getElementById('Answer').textContent="Correct Answer!";
+			document.getElementById('nextButton').style.visibility="visible";
+		}
+	else
+	{
+		document.getElementById('Answer').textContent="Incorrect Answer!";
+	}
+
 }
-
-
 
 function step3()
 {
 	myStopFunction();
+	document.getElementById('canvas3_img1').style.visibility="visible";
+	document.getElementById('myresult2').style.visibility="hidden";
 	document.getElementById('weight').style.left="70px";
 	document.getElementById('weight').style.top="380px";
 	document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 50px; top: 450px; height: 40px; z-index: 10;";
@@ -349,10 +356,12 @@ function step3()
 function step3_1()
 {
 	myStopFunction();
-	document.getElementById('weight').style.left="550px";
-	document.getElementById('weight').style.top="335px";
+	document.getElementById('weight').style.left="500px";
+	document.getElementById('weight').style.top="325px";
+	document.getElementById('canvas3_img1').style.visibility="hidden";
+	document.getElementById('canvas3_img2').style.visibility="visible";
 
-	document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 100px; top: 250px; height: 40px; z-index: 10;";
+	document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 80px; top: 245px; height: 40px; z-index: 10;";
 
 	myInt = setInterval(function(){ animatearrow(); }, 500);
 	
@@ -361,27 +370,41 @@ function step3_1()
 	document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
 	// Standard syntax
 	document.getElementById("arrow1").style.transform = "rotate(180deg)";
-	document.getElementById('canvas3_img1').onclick=function() { step3_2(); };
+	document.getElementById('canvas3_img2').onclick=function() { step3_2(); };
 }
 
 function step3_2()
 {
 	myStopFunction();
-	document.getElementById('canvas3_img2').style.visibility="visible";
-	document.getElementById('canvas3_img1').style.visibility="hidden";
+	document.getElementById('canvas3_img2').style.visibility="hidden";
+	document.getElementById('canvas3_img1').style.visibility="visible";
 	step3_3()
 }
 
 function step3_3()
 {
-	imageZoom("canvas3_img2", "myresult2");
-	document.getElementById('question1').style.visibility="visible";
+	document.getElementById('myresult2').style.visibility="visible";
+	imageZoom("canvas3_img1", "myresult2");
+	document.getElementById('canvas3_img1').style.left="50px";
+	document.getElementById('canvas3_img1').style.top="100px";
+	document.getElementById('weight').style.left="440px";
+	document.getElementById('weight').style.top="270px";
+	document.getElementById('question2').style.visibility="visible";
+	
 }
 
 function step3_4()
 {
 	myStopFunction()
-	document.getElementById('nextButton').style.visibility="visible";
+	if(document.getElementById('myList2').value == 3)
+	{
+		document.getElementById('Answer2').textContent="Correct Answer!";
+		document.getElementById('nextButton').style.visibility="visible";
+	}
+else
+{
+	document.getElementById('Answer2').textContent="Incorrect Answer!";
+}
 }
 
 function step4()
