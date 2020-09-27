@@ -162,6 +162,8 @@ function magic()
 		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 70px; top: 245px; height: 40px; z-index: 10;";
 
 		myInt = setInterval(function(){ animatearrow(); }, 500);
+
+		
 		
 		document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
 		// Code for IE9
@@ -187,26 +189,23 @@ function magic()
 	}
 	else if (simsubscreennum==4)
 	{
-				refresh1();
+		document.getElementById('canvas3_img1').style.visibility="hidden";
+		document.getElementById('canvas4_img1').style.visibility="visible";
 
-		document.getElementById('flask4').style.visibility="visible";
-		document.getElementById('nob4-1').style.visibility="visible";
-        document.getElementById('a11').style.visibility="hidden";
-	    document.getElementById('a12').style.visibility="hidden";
-        document.getElementById('k1').style.visibility="hidden";
-	    document.getElementById('k2').style.visibility="hidden";
 		document.getElementById('nextButton').style.visibility="hidden";
+		document.getElementById('weight2').style.visibility="visible";
+		document.getElementById('arrow1').style.visibility="visible";
 		myInt = setInterval(function(){ animatearrow(); }, 500);
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 190px; top: 190px; height: 40px; z-index: 10;";
+		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 480px; top: 270px; height: 40px; z-index: 10;";
 
 		document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
 		// Code for IE9
 		document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
 		// Standard syntax
-		document.getElementById("arrow1").style.transform = "rotate(180deg)";
+		document.getElementById("arrow1").style.transform = "rotate(270deg)";
 
 
-		document.getElementById('nob4-1').onclick=function() { step4(); };
+		document.getElementById('weight2').onclick=function() { step4(); };
 	}
 	else if (simsubscreennum==5)
 	{
@@ -410,100 +409,43 @@ else
 function step4()
 {
 	myStopFunction();
-	document.getElementById('nob4-1').style.visibility="hidden";
-	document.getElementById('nob4-2').style.visibility="visible";
-	document.getElementById("nob4-2").onclick="";
-	setTimeout(function(){
-   document.getElementById('hand4').style.visibility="visible";
+	document.getElementById('weight2').style.left="460px";
+	document.getElementById('weight2').style.top="272px";
+	document.getElementById('canvas4_img1').style.visibility="hidden";
+	document.getElementById('canvas4_img2').style.visibility="visible";
 	myInt = setInterval(function(){ animatearrow(); }, 500);
-    document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 420px; top: 190px; height: 40px; z-index: 10;";
+    document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 60px; top: 200px; height: 40px; z-index: 10;";
 
-    document.getElementById("arrow1").style.WebkitTransform = "rotate(360deg)";
+    document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
 		// Code for IE9
-    document.getElementById("arrow1").style.msTransform = "rotate(360deg)";
+    document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
 		// Standard syntax
-    document.getElementById("arrow1").style.transform = "rotate(360deg)";
-	document.getElementById('hand4').onclick=function() { step41(); };
-	}, 1200);
+	document.getElementById("arrow1").style.transform = "rotate(180deg)";
+	
+	document.getElementById('canvas4_img2').onclick=function() { step4_1(); };
 }
 
-
-function step41()
+function step4_1()
 {
 	myStopFunction();
-	document.getElementById('hand4').style.transformOrigin = "100% 80%";
-	document.getElementById('hand4').style.animation = "valveturn-4 1.5s forwards ";
-	setTimeout(function()
-	{
-		 document.getElementById('kero4-3').style.visibility="visible";
-		 document.getElementById('kero4-1').style.visibility="visible";
-	     document.getElementById('kero4-1').style.animation = "water-5 1.5s 1 reverse";
-	     document.getElementById('kero4-2').style.visibility="visible";
-	     document.getElementById('kero4-2').style.animation = "water-5 1.8s 1 forwards";
-	},500);
-
-	setTimeout(function()
-	{
-		document.getElementById('kero4-3').style.visibility="hidden";
-		document.getElementById('kero4-1').style.visibility="hidden";
-        document.getElementById('hand4').style.visibility="hidden";
-		myInt = setInterval(function(){ animatearrow(); }, 500);
-       document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 150px; top: 190px; height: 40px; z-index: 10;";
-
-       document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
-		// Code for IE9
-       document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
-		// Standard syntax
-       document.getElementById("arrow1").style.transform = "rotate(180deg)";
-		 document.getElementById('nob4-2').onclick=function() { step42(); };
-
-       }, 1800);
+	document.getElementById('canvas4_img2').style.visibility="hidden";
+	document.getElementById('canvas4_img1').style.visibility="visible";
+	document.getElementById('question2').style.visibility="hidden";
+	document.getElementById('question3').style.visibility="visible";
 }
 
-function step42()
+function step4_2()
 {
-        myStopFunction();
-		document.getElementById('nob4-2').style.visibility="hidden";
-		document.getElementById('nob4-3').style.visibility="visible";
-		document.getElementById('cflask4').style.visibility="visible";
-       setTimeout(function()
-		{
-		myInt = setInterval(function(){ animatearrow(); }, 500);
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 190px; top: 300px; height: 40px; z-index: 10;";
-
-		document.getElementById("arrow1").style.WebkitTransform = "rotate(180deg)";
-		// Code for IE9
-		document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
-		// Standard syntax
-		document.getElementById("arrow1").style.transform = "rotate(180deg)";
-		document.getElementById('cflask4').onclick=function() { step43(); };
-
-        }, 1300);
-}
-
-function step43()
-{
-	myStopFunction();
-	document.getElementById('flask4').style.visibility="hidden";
-		document.getElementById('cflask4').style.visibility="hidden";
-
-	document.getElementById('nob4-3').style.visibility="hidden";
-	document.getElementById('kero4-2').style.visibility="hidden";
-	setTimeout(function(){
-		document.getElementById('k3').style.visibility="visible";
-	document.getElementById('a7').style.visibility="visible";
-	document.getElementById('a8').style.visibility="visible";
-
-	}, 500);
-	setTimeout(function()
+	myStopFunction()
+	if(document.getElementById('myList3').value == 3)
 	{
-
+		document.getElementById('Answer3').textContent="Correct Answer!";
 		document.getElementById('nextButton').style.visibility="visible";
-
-		document.getElementById('can4').innerHTML="Weight of flask + kerosene(W<sub>4</sub>) = "+values[p][3] +"g";
-		document.getElementById('v4').innerHTML=+values[p][3]+"g";
-
-	}, 1200);
+	}
+else
+{
+	document.getElementById('Answer3').textContent="Incorrect Answer!";
+}
 }
 
 function step5()
