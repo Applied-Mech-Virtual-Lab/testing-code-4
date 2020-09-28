@@ -299,10 +299,16 @@ function magic()
 
 	}
 
+	else if (simsubscreennum==9)
+	{
+		document.getElementById('canvas8_img1').style.visibility="hidden";
+		document.getElementById('weight6').style.visibility="hidden";
+		document.getElementById("myresult5").style.visibility="hidden";
 
+	}
 
-
-	/*else if (simsubscreennum==6)
+/*	
+	else if (simsubscreennum==9)
 	{
 		refresh1();
 		document.getElementById('k5').style.visibility="hidden";
@@ -342,7 +348,7 @@ function magic()
 
 		 }
 	}
-	else if (simsubscreennum==7)
+	else if (simsubscreennum==10)
 	{
 		document.getElementById("trial").style.visibility="hidden";
 		document.getElementById("p6-2").style.visibility="hidden";
