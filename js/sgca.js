@@ -303,7 +303,10 @@ function magic()
 	{
 		document.getElementById('canvas8_img1').style.visibility="hidden";
 		document.getElementById('weight6').style.visibility="hidden";
-		document.getElementById("myresult5").style.visibility="hidden";
+		document.getElementById('canvas8_img1').style.visibility="hidden";
+		document.getElementById('canvas8').style.visibility="hidden";
+	document.getElementById('question7').style.visibility="hidden";
+
 
 	}
 
