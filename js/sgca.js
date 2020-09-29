@@ -38,62 +38,6 @@ var options2=[["100ml","250ml","500ml","1000ml"],//250ml
 			  ["3.9","3.11","3.16","3.19"]];//3.19
 
 
-function imageZoom(imgID, resultID) {
-  var img, lens, result, cx, cy;
-  img = document.getElementById(imgID);
-  result = document.getElementById(resultID);
-  /*create lens:*/
-  lens = document.createElement("DIV");
-  lens.setAttribute("class", "img-zoom-lens");
-  /*insert lens:*/
-  img.parentElement.insertBefore(lens, img);
-  /*calculate the ratio between result DIV and lens:*/
-  cx = result.offsetWidth / lens.offsetWidth;
-  cy = result.offsetHeight / lens.offsetHeight;
-  /*set background properties for the result DIV:*/
-  result.style.backgroundImage = "url('" + img.src + "')";
-  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
-  /*execute a function when someone moves the cursor over the image, or the lens:*/
-  lens.addEventListener("mousemove", moveLens);
-  img.addEventListener("mousemove", moveLens);
-  /*and also for touch screens:*/
-  lens.addEventListener("touchmove", moveLens);
-  img.addEventListener("touchmove", moveLens);
-  function moveLens(e) {
-    var pos, x, y;
-    /*prevent any other actions that may occur when moving over the image:*/
-    e.preventDefault();
-    /*get the cursor's x and y positions:*/
-    pos = getCursorPos(e);
-    /*calculate the position of the lens:*/
-    x = pos.x - (lens.offsetWidth / 2);
-    y = pos.y - (lens.offsetHeight / 2);
-    /*prevent the lens from being positioned outside the image:*/
-    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-    if (x < 0) {x = 0;}
-    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-    if (y < 0) {y = 0;}
-    /*set the position of the lens:*/
-    lens.style.left = x + "px";
-    lens.style.top = y + "px";
-    /*display what the lens "sees":*/
-    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
-  }
-
-  function getCursorPos(e) {
-    var a, x = 0, y = 0;
-    e = e || window.event;
-    /*get the x and y positions of the image:*/
-    a = img.getBoundingClientRect();
-    /*calculate the cursor's x and y coordinates, relative to the image:*/
-    x = e.pageX - a.left;
-    y = e.pageY - a.top;
-    /*consider any page scrolling:*/
-    x = x - window.pageXOffset;
-    y = y - window.pageYOffset;
-    return {x : x, y : y};
-  }
-}
 			  
 function validateAnswer(qn,ans,left,top)
 {
@@ -177,7 +121,6 @@ function magic()
 	{
 		document.getElementById('nextButton').style.visibility="hidden";
 		document.getElementById('canvas1_img2').style.visibility="hidden";
-		imageZoom("canvas2_img1", "myresult");
 		document.getElementById('canvas2_img1').style.visibility="visible";
 
 
@@ -310,86 +253,6 @@ function magic()
 
 	}
 
-/*	
-	else if (simsubscreennum==9)
-	{
-		refresh1();
-		document.getElementById('k5').style.visibility="hidden";
-	    document.getElementById('a9').style.visibility="hidden";
-	    document.getElementById('a10').style.visibility="hidden";
-
-		document.getElementById('can6-1').innerHTML="Empty weight of flask with stopper (W<sub>1</sub>)="+values[p][0] +" g";
-		document.getElementById('can6-2').innerHTML="Weight of flask + cement (W<sub>2</sub>) = "+values[p][1] +" g" ;
-		document.getElementById('can6-3').innerHTML="Weight of flask + cement + kerosene (W<sub>3</sub>) =" +values[p][2]  +" g";
-		document.getElementById('can6-4').innerHTML="Weight of flask + kerosene (W<sub>4</sub>) = "+values[p][3]  +" g" ;
-		document.getElementById('can6-5').innerHTML="Weight of flask+water (W<sub>5</sub>) =" +values[p][4]  +" g";
-		document.getElementById('can6-6').innerHTML="Specific gravity of kerosene =" +values[p][6];
-		calculateSpecificGravity();
-
-        if(repeat>1)
-		{
-			calculateSpecificGravity2();
-		}
-		if(repeat < 2 && repeat>0)
-		 {
-
-			 flag=1;
-			 simsubscreennum=1;
-
-            document.getElementById('k5').style.visibility="hidden";
-	        document.getElementById('a9').style.visibility="hidden";
-	        document.getElementById('a10').style.visibility="hidden";
-            document.getElementById('k5').style.visibility="hidden";
-	        document.getElementById('a9').style.visibility="hidden";
-	        document.getElementById('a10').style.visibility="hidden";
-	        document.getElementById('k5').style.visibility="hidden";
-	        document.getElementById('a9').style.visibility="hidden";
-	        document.getElementById('a10').style.visibility="hidden";
-            document.getElementById('k5').style.visibility="hidden";
-	        document.getElementById('a9').style.visibility="hidden";
-	        document.getElementById('a10').style.visibility="hidden";
-
-		 }
-	}
-	else if (simsubscreennum==10)
-	{
-		document.getElementById("trial").style.visibility="hidden";
-		document.getElementById("p6-2").style.visibility="hidden";
-		document.getElementById("l6-2").style.visibility="hidden";
-		document.getElementById("r1").style.visibility="hidden";
-		document.getElementById("r2").style.visibility="hidden";
-		document.getElementById("output2").style.visibility="hidden";
-		document.getElementById("7-1").innerHTML=values[lastp][7];
-		document.getElementById("7-3").innerHTML=values[p][7];
-		document.getElementById("check3").onclick=function()
-		{
-			if(!document.getElementById("avg").value  || !document.getElementById("avg").value!=" ")
-			{
-				alert("Enter the value to proceed ");
-			}
-			else
-			{
-				avg = document.getElementById("avg").value;
-				average=(values[p][7]+values[lastp][7])/2;
-				if(Math.round(avg) == Math.round(average))
-				{
-					document.getElementById("check3").style.visibility="hidden";
-					document.getElementById("rw").style="color:#32CD32; font-size:22px; position:absolute; left:510px; top:118px;";
-					document.getElementById("rw").innerHTML="&#10004;";
-					document.getElementById("rw").style.visibility="visible";
-					document.getElementById("inferenceDiv").style.visibility="visible";
-				}
-				else
-				{
-					document.getElementById("rw").style="color:red; font-size:22px; position:absolute; left:510px; top:118px;";
-					document.getElementById("rw").innerHTML="&#10008;";
-					document.getElementById("rw").style.visibility="visible";
-				}
-			}
-
-		}
-	}
-	*/
 }
 
 	function step1()
@@ -420,7 +283,6 @@ function step3()
 {
 	myStopFunction();
 	document.getElementById('canvas3_img1').style.visibility="visible";
-	document.getElementById('myresult2').style.visibility="hidden";
 	document.getElementById('weight').style.left="70px";
 	document.getElementById('weight').style.top="380px";
 	document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 50px; top: 450px; height: 40px; z-index: 10;";
@@ -465,8 +327,6 @@ function step3_2()
 
 function step3_3()
 {
-	document.getElementById('myresult2').style.visibility="visible";
-	imageZoom("canvas3_img1", "myresult2");
 	document.getElementById('canvas3_img1').style.left="50px";
 	document.getElementById('canvas3_img1').style.top="100px";
 	document.getElementById('weight').style.left="440px";
