@@ -49,12 +49,13 @@ function navNext()
  simsubscreennum+=1;
  document.getElementById('canvas'+(simsubscreennum)).style.visibility="visible";
  document.getElementById('nextButton').style.visibility="hidden";
+ document.getElementById("questDiv").style.visibility="hidden";
  magic();
 }
 
 
 var ca;
-var questions=["Capacity of Le-Chatelier Flask used for determining</br> Specific Gravity of Cement is",
+var questions=["If the cement is exposed to extreme moisture content due to bad weather</br> conditions, then the speci",
 				"The amount of cement taken is calculated as ",
 				"Care should be taken for the Kerosene to be free from water.",
 				"If the cement is exposed to extreme moisture content due to bad weather</br> conditions, then the specific gravity of cement may go up to "];
@@ -98,7 +99,7 @@ function validateAnswer(qn,ans,left,top)
 			}
 			setTimeout(function()
 			{
-				document.getElementById("questDiv").style.visibility="hidden";
+
 				document.getElementById("nextButton").style.visibility="visible";
 			},1500);
 		});
@@ -149,8 +150,7 @@ function magic()
 		document.getElementById('nextButton').style.visibility="hidden";
 		document.getElementById('canvas1_img2').style.visibility="hidden";
 		document.getElementById('canvas2_img1').style.visibility="visible";
-
-
+		validateAnswer(0,0,"100px","420px");
 	}
 	else if (simsubscreennum==3)
 	{
@@ -359,6 +359,7 @@ function step3_3()
 	document.getElementById('weight').style.left="440px";
 	document.getElementById('weight').style.top="270px";
 	document.getElementById('question2').style.visibility="visible";
+	
 
 }
 
