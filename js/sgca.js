@@ -131,7 +131,7 @@ function magic()
 	if (simsubscreennum==1)
 	{
 		document.getElementById('nextButton').style.visibility="hidden";
-		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 70px; top: 245px; height: 40px; z-index: 10;";
+		document.getElementById('arrow1').style="visibility:visible ;position:absolute; left: 174px; top: 500px; height: 40px; z-index: 10;";
 
 		myInt = setInterval(function(){ animatearrow(); }, 500);
 
@@ -142,7 +142,7 @@ function magic()
 		document.getElementById("arrow1").style.msTransform = "rotate(180deg)";
 		// Standard syntax
 		document.getElementById("arrow1").style.transform = "rotate(180deg)";
-		document.getElementById('canvas1_img1').onclick=function() { step1(); };
+		document.getElementById('canvas1_img3').onclick=function() { step1(); };
 	}
 
 	else if (simsubscreennum==2)
@@ -285,8 +285,8 @@ function magic()
 	function step1()
 {
 	myStopFunction();
-	document.getElementById('canvas1_img1').style.visibility="hidden";
-	document.getElementById('canvas1_img2').style.visibility="visible";
+	document.getElementById('canvas1_img3').style.left="450px";
+	document.getElementById('canvas1_img3').style.top="19px";
  	document.getElementById('nextButton').style.visibility="visible";
 }
 
