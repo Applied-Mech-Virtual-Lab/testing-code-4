@@ -286,8 +286,13 @@ function magic()
 {
 	myStopFunction();
 	document.getElementById('canvas1_img3').style.left="450px";
-	document.getElementById('canvas1_img3').style.top="19px";
- 	document.getElementById('nextButton').style.visibility="visible";
+	document.getElementById('canvas1_img3').style.top="-70px";
+	document.getElementById('string').style.webkitAnimationPlayState='running'; 	
+	document.getElementById('string_2').style.webkitAnimationPlayState='running'; 
+	document.getElementById('box').style.webkitAnimationPlayState='running';
+
+
+ 	// document.getElementById('nextButton').style.visibility="visible";
 }
 
 
